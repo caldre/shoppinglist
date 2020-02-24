@@ -6,22 +6,22 @@ const List = props => {
   const listaus = props.todoList.map(itemi => (
     <li key={itemi.id}>
       {itemi.name}
-      <span
+      <button
         style={{ cursor: "pointer" }}
         onClick={() => {
           props.removeItem(itemi);
         }}
       >
-        X
-      </span>
-      <span
+        DELETE
+      </button>
+      <button
         style={{ cursor: "pointer" }}
         onClick={() => {
           props.shoppingCartAdd(itemi);
         }}
       >
-        ADDSHOPPINGCART
-      </span>
+        ADD TO CART
+      </button>
     </li>
   ));
   return <div>{listaus}</div>;

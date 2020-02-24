@@ -11,8 +11,6 @@ export const addItem = input => {
   };
 };
 
-
-
 export const removeItem = id => {
   return {
     type: "REMOVE_ITEM",
@@ -24,13 +22,13 @@ export const shoppingCartAdd = item => {
   return {
     type: "SHOPPING_CART_ADD",
     payload: item
-
-  }
-}
+  };
+};
 
 export const shoppingCartRemove = id => {
+  console.log("poistetaan");
   return {
     type: "SHOPPING_CART_REMOVE",
     payload: id
-  }
-}
+  };
+};

@@ -4,27 +4,20 @@ import { connect } from "react-redux";
 
 const ShoppingCart = props => {
   const listaus = props.shoppingCartList.map(itemi => (
-    <li key = {itemi.id}>
+    <li key={itemi.id}>
       {itemi.name}
-      <span
-        style={{ cursor: "pointer" }}
-        
-        
-      >
-        +
-      </span>
-      <span
+      <span style={{ cursor: "pointer" }}></span>
+      <button
         style={{ cursor: "pointer" }}
         onClick={() => {
-          props.shoppingCartRemove(itemi.id);
+          props.shoppingCartRemove(itemi);
         }}
       >
-        -
-      </span>
-    <span>{itemi.price}}</span>
+        POISTA
+      </button>
+      <span>{itemi.price}</span>
     </li>
-  )
-  );
+  ));
   return <div>{listaus}</div>;
 };
 
