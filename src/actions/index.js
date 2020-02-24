@@ -6,17 +6,12 @@ export const addItem = input => {
     payload: {
       name: input,
       id: uuid(),
-      completed: false
+      price: 10
     }
   };
 };
 
-export const setComplete = id => {
-  return {
-    type: "SET_COMPLETE",
-    payload: id
-  };
-};
+
 
 export const removeItem = id => {
   return {
@@ -24,3 +19,18 @@ export const removeItem = id => {
     payload: id
   };
 };
+
+export const shoppingCartAdd = item => {
+  return {
+    type: "SHOPPING_CART_ADD",
+    payload: item
+
+  }
+}
+
+export const shoppingCartRemove = id => {
+  return {
+    type: "SHOPPING_CART_REMOVE",
+    payload: id
+  }
+}
