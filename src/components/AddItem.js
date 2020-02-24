@@ -8,6 +8,7 @@ const Inputti = props => {
   const add = e => {
     e.preventDefault();
     props.addItem(state);
+    setState("");
   };
 
   return (
