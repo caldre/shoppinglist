@@ -1,20 +1,10 @@
 import React from "react";
-import { removeItem, setComplete } from "../actions";
+import { removeItem, shoppingCartAdd } from "../actions";
 import { connect } from "react-redux";
 
 const List = props => {
   const listaus = props.todoList.map(itemi => (
-    <li
-      onClick={() => {
-        props.setComplete(itemi.id);
-      }}
-      key={itemi.id}
-      style={
-        itemi.completed
-          ? { textDecoration: "line-through" }
-          : { textDecoration: "none" }
-      }
-    >
+    <li key={itemi.id}>
       {itemi.name}
       <span
         style={{ cursor: "pointer" }}
@@ -23,6 +13,14 @@ const List = props => {
         }}
       >
         X
+      </span>
+      <span
+        style={{ cursor: "pointer" }}
+        onClick={() => {
+          props.shoppingCartAdd(itemi);
+        }}
+      >
+        ADDSHOPPINGCART
       </span>
     </li>
   ));
@@ -33,4 +31,4 @@ const mapStateToProps = state => {
   return { todoList: state.todoReducer };
 };
 
-export default connect(mapStateToProps, { removeItem, setComplete })(List);
+export default connect(mapStateToProps, { removeItem, shoppingCartAdd })(List);

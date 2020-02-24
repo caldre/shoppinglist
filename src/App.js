@@ -1,6 +1,7 @@
 import React from "react";
 import AddItem from "./components/AddItem";
 import List from "./components/List";
+import ShoppingCart from "./components/ShoppingCart"
 import "./App.css";
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
     <React.Fragment>
       <AddItem />
       <List />
+      <ShoppingCart/>
     </React.Fragment>
   );
 }
