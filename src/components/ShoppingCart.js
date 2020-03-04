@@ -3,9 +3,10 @@ import { shoppingCartRemove } from "../actions";
 import { connect } from "react-redux";
 
 const ShoppingCart = props => {
+  console.log(props);
   const listaus = props.shoppingCartList.map(itemi => (
     <li key={itemi.id}>
-      {itemi.name}
+      <span> {itemi.quantity}</span> {itemi.name}
       <span style={{ cursor: "pointer" }}></span>
       <button
         style={{ cursor: "pointer" }}
