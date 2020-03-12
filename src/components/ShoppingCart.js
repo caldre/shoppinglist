@@ -3,11 +3,21 @@ import { shoppingCartRemove } from "../actions";
 import { connect } from "react-redux";
 
 const ShoppingCart = props => {
-  console.log(props);
-  const listaus = props.shoppingCartList.map(itemi => (
-    <li key={itemi.id}>
-      <span> {itemi.quantity}</span> {itemi.name}
-      <span style={{ cursor: "pointer" }}></span>
+  const changeQuantityInInput = () => {};
+
+  const cartRows = props.shoppingCartList.map(itemi => (
+    <div
+      key={itemi.id}
+      className="shopping-cart-line"
+      style={{ display: "flex" }}
+    >
+      <div className="shopping-cart-item-name">{itemi.name}</div>
+      <input
+        type="number"
+        value={itemi.quantity}
+        onChange={() => changeQuantityInInput()}
+        className="shopping-cart-item-quantity"
+      ></input>
       <button
         style={{ cursor: "pointer" }}
         onClick={() => {
@@ -16,10 +26,11 @@ const ShoppingCart = props => {
       >
         POISTA
       </button>
-      <span>{itemi.price}</span>
-    </li>
+      <span>{itemi.price * itemi.quantity}</span>
+    </div>
   ));
-  return <div>{listaus}</div>;
+
+  return <div>{cartRows}</div>;
 };
 
 const mapStateToProps = state => {

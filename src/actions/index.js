@@ -6,7 +6,7 @@ export const addItem = input => {
     payload: {
       name: input,
       id: uuid(),
-      price: "10€",
+      price: 10,
       quantity: 1
     }
   };
