@@ -1,14 +1,21 @@
-import React from "react";
+import React, {useState} from "react";
 import {
   shoppingCartIncrease,
   shoppingCartDecrease,
-  shoppingCartRemove
+  shoppingCartRemove,
+  shoppingCartChange
 } from "../actions";
 import { connect } from "react-redux";
 
 const ShoppingCartItem = props => {
   const { id, name, quantity, price } = props.cartItem;
-  const changeQuantityInInput = () => {};
+  
+  const changeQuantityInInput = (e, id) => {
+    e.preventDefault()
+    props.shoppingCartChange(id, e.target.value)
+    console.log(id, e.target.value)
+  };
+  const [inputValue, setInputValue] = useState(quantity)
 
   return (
     <div className="shopping-cart-row">
@@ -23,9 +30,16 @@ const ShoppingCartItem = props => {
         -
       </button>
       <input
+<<<<<<< HEAD
         value={quantity}
         onChange={() => changeQuantityInInput()}
         className="cart-item-quantity"
+=======
+        value={inputValue}
+        onChange={(e) => setInputValue(e.target.value)}
+        onBlur={e => changeQuantityInInput(e, id)}
+        className="shopping-cart-item-quantity"
+>>>>>>> 6b549b4... input
       ></input>
       <button
         className="cart-item-button"
@@ -55,5 +69,6 @@ const mapStateToProps = state => {
 export default connect(mapStateToProps, {
   shoppingCartIncrease,
   shoppingCartDecrease,
-  shoppingCartRemove
+  shoppingCartRemove,
+  shoppingCartChange
 })(ShoppingCartItem);

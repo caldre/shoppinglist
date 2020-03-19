@@ -48,6 +48,16 @@ const shoppingCartReducer = (shoppingCartList = [], action) => {
       );
       console.log("REDUCER: Removing item from cart");
       return [...newState];
+    case "SHOPPING_CART_CHANGE_QUANTITY":
+      console.log("REducer: SHOPPING_CART_CHANGE_QUANTITY")
+      console.log(action.payload)
+      const newShoppingCartList = shoppingCartList.map(item => { if (item.id === action.payload.id) { 
+        item.quantity = action.payload.quantity
+         return item
+        }
+        return item
+      })
+      return newShoppingCartList 
     default:
       return shoppingCartList;
   }
