@@ -1,38 +1,51 @@
-.App {
-  text-align: center;
+* {
+  margin: 0px;
+  padding: 5px;
+  border: 0px solid black;
+  font-family: "Baloo Chettan 2", cursive;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    "a b"
+    "c d"
+    "e e";
+  grid-template-columns: 5fr 1fr;
+  grid-template-rows: 1fr 8fr 1fr;
+  height: 100vh;
+  background-color: aliceblue;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.header {
+  grid-area: a;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.navbar {
+  grid-area: b;
+}
+
+.store-container {
+  grid-area: c;
+}
+
+.shopping-cart-container {
+  grid-area: d;
+}
+
+.shopping-cart-row {
+  display: flex;
+}
+
+.shopping-cart-row > input {
+  width: 1.5em;
+}
+
+.footer {
+  grid-area: e;
+}
+
+.add-display {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }

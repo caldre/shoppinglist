@@ -3,23 +3,45 @@ import { connect } from "react-redux";
 import { addItem } from "../actions";
 
 const Inputti = props => {
-  const [state, setState] = useState("");
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [price, setPrice] = useState(0);
 
-  const add = e => {
+  let newItem = {
+    name,
+    description,
+    price
+  };
+
+  const handleSubmit = e => {
     e.preventDefault();
-    props.addItem(state);
-    setState("");
+
+    props.addItem(newItem);
+    setName("");
+    setDescription("");
+    setPrice(0);
   };
 
   return (
-    <form>
+    <form className="add-display">
       <input
         type="text"
-        placeholder="Lisää uusi itemi"
-        onChange={e => setState(e.target.value)}
-        value={state}
+        placeholder="Lisää uuden tuotteen nimi"
+        onChange={e => setName(e.target.value)}
+        value={name}
       ></input>
-      <button type="submit" onClick={e => add(e)}>
+      <textarea
+        placeholder="Lisää uuden tuotteen kuvaus"
+        onChange={e => setDescription(e.target.value)}
+        value={description}
+      ></textarea>
+      <input
+        type="number"
+        placeholder="Lisää uuden tuotteen hinta"
+        onChange={e => setPrice(e.target.value)}
+        value={price}
+      ></input>
+      <button type="submit" onClick={e => handleSubmit(e)}>
         Lisää
       </button>
     </form>
@@ -27,6 +49,7 @@ const Inputti = props => {
 };
 
 const mapStateToProps = state => {
-  return { todoList: state.todoReducer };
+  return { storeList: state.storeReducer };
 };
+
 export default connect(mapStateToProps, { addItem })(Inputti);

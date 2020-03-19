@@ -1,27 +1,28 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
-import Header from "./components/layout/Header";
-import Navbar from "./components/layout/Navbar";
-import Footer from "./components/layout/Footer";
+import Header from "./layout/Header";
+import Navbar from "./layout/Navbar";
+import Footer from "./layout/Footer";
+import SideContainer from "./layout/SideContainer";
 
 import AddItem from "./components/AddItem";
-import List from "./components/List";
+import Catalog from "./components/Catalog";
 import ShoppingCart from "./components/ShoppingCart";
 import "./App.css";
 
 function App() {
   return (
     <Router>
-      <Header />
-      <Navbar />
-
-      <Route path="/admin" component={AddItem} />
-      <List />
-      <br></br>
-      <ShoppingCart />
-
-      <Footer />
+      <div className="grid-container">
+        <Header />
+        <Navbar />
+        <SideContainer></SideContainer>
+        <Route exact path="/admin" component={AddItem} />
+        <Route exact path="/" component={ShoppingCart} />
+        <Catalog />
+        <Footer />
+      </div>
     </Router>
   );
 }
