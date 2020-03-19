@@ -1,28 +1,46 @@
 * {
   margin: 0px;
-  padding: 5px;
+  padding: 0.5em;
   border: 0px solid black;
   font-family: "Baloo Chettan 2", cursive;
 }
 
+html {
+  padding: 0;
+}
+
+body {
+  padding: 0;
+}
+
+#root {
+  padding: 0;
+}
+
 .grid-container {
+  padding: 0;
   display: grid;
   grid-template-areas:
-    "a b"
+    "a a"
     "c d"
     "e e";
-  grid-template-columns: 5fr 1fr;
-  grid-template-rows: 1fr 8fr 1fr;
+  grid-template-columns: 5fr 2fr;
+  grid-template-rows: 0.2fr 8fr 1fr;
   height: 100vh;
-  background-color: aliceblue;
 }
 
 .header {
+  padding: 0;
   grid-area: a;
+  border-bottom: 1px solid black;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .navbar {
-  grid-area: b;
+  grid-area: a;
 }
 
 .store-container {
@@ -31,18 +49,38 @@
 
 .shopping-cart-container {
   grid-area: d;
+  border-left: 1px solid black;
 }
 
 .shopping-cart-row {
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
-.shopping-cart-row > input {
-  width: 1.5em;
+.cart-item-name {
+  flex-grow: 6;
 }
+
+.cart-item-quantity {
+  width: 2em;
+  text-align: end;
+}
+
+/* .shopping-cart-row:nth-child(2) {
+}
+.shopping-cart-row:nth-child(3) {
+}
+.shopping-cart-row:nth-child(4) {
+}
+.shopping-cart-row:nth-child(5) {
+}
+.shopping-cart-row:nth-child(6) {
+} */
 
 .footer {
   grid-area: e;
+  border-top: 1px solid black;
 }
 
 .add-display {

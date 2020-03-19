@@ -5,14 +5,14 @@ const shoppingCartReducer = (shoppingCartList = [], action) => {
   let indexOfItem;
   switch (action.type) {
     case "SHOPPING_CART_INCREASE":
-      console.log("Increasing quantity");
+      console.log("REDUCER: Increasing quantity");
       shoppingCartList.forEach(cartItem => arrayOfIds.push(cartItem.id));
       indexOfItem = arrayOfIds.indexOf(action.payload);
       shoppingCartList[indexOfItem].quantity++;
       return [...shoppingCartList];
 
     case "SHOPPING_CART_DECREASE":
-      console.log("Decreasing quantity");
+      console.log("REDUCER: Decreasing quantity");
       shoppingCartList.forEach(cartItem => arrayOfIds.push(cartItem.id));
       indexOfItem = arrayOfIds.indexOf(action.payload);
 
@@ -27,22 +27,26 @@ const shoppingCartReducer = (shoppingCartList = [], action) => {
       return [...shoppingCartList];
 
     case "SHOPPING_CART_ADD":
-      console.log("Adding new item to cart");
-
       shoppingCartList.forEach(cartItem => arrayOfIds.push(cartItem.id));
       indexOfItem = arrayOfIds.indexOf(action.payload.id);
 
       if (indexOfItem === -1) {
+        console.log("REDUCER: Adding new item to cart");
         return [...shoppingCartList, action.payload];
       }
 
-      return [...shoppingCartList];
+      const newAction = {
+        type: "SHOPPING_CART_INCREASE",
+        payload: action.payload.id
+      };
+
+      return shoppingCartReducer(shoppingCartList, newAction);
 
     case "SHOPPING_CART_REMOVE":
-      console.log("Removing item from cart");
       const newState = shoppingCartList.filter(
         item => item.id !== action.payload
       );
+      console.log("REDUCER: Removing item from cart");
       return [...newState];
     default:
       return shoppingCartList;
@@ -52,10 +56,10 @@ const shoppingCartReducer = (shoppingCartList = [], action) => {
 const storeReducer = (storeList = [], action) => {
   switch (action.type) {
     case "ADD_ITEM":
-      console.log("Adding item to store");
+      console.log("REDUCER: Adding item to store");
       return [...storeList, action.payload];
     case "REMOVE_ITEM":
-      console.log("Removing item from store");
+      console.log("REDUCER: Removing item from store");
       return storeList.filter(item => item.id !== action.payload.id);
     default:
       return storeList;

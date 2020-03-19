@@ -2,7 +2,6 @@ import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import Header from "./layout/Header";
-import Navbar from "./layout/Navbar";
 import Footer from "./layout/Footer";
 import SideContainer from "./layout/SideContainer";
 
@@ -16,7 +15,6 @@ function App() {
     <Router>
       <div className="grid-container">
         <Header />
-        <Navbar />
         <SideContainer></SideContainer>
         <Route exact path="/admin" component={AddItem} />
         <Route exact path="/" component={ShoppingCart} />

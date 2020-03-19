@@ -12,8 +12,10 @@ const ShoppingCartItem = props => {
 
   return (
     <div className="shopping-cart-row">
-      <h3>{name}</h3>
+      <h3 className="cart-item-name">{name}</h3>
+      <p className="cart-item-price">{price}€ / kpl</p>
       <button
+        className="cart-item-button"
         onClick={() => {
           props.shoppingCartDecrease(id);
         }}
@@ -23,16 +25,18 @@ const ShoppingCartItem = props => {
       <input
         value={quantity}
         onChange={() => changeQuantityInInput()}
-        className="shopping-cart-item-quantity"
+        className="cart-item-quantity"
       ></input>
       <button
+        className="cart-item-button"
         style={{ cursor: "pointer" }}
         onClick={() => props.shoppingCartIncrease(id)}
       >
         +
       </button>
-      <p>{price * quantity}</p>
+      <p className="cart-item-quantity">{price * quantity}€</p>
       <button
+        className="cart-item-button"
         style={{ cursor: "pointer" }}
         onClick={() => {
           props.shoppingCartRemove(id);
