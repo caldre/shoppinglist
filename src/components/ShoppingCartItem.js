@@ -30,16 +30,10 @@ const ShoppingCartItem = props => {
         -
       </button>
       <input
-<<<<<<< HEAD
-        value={quantity}
-        onChange={() => changeQuantityInInput()}
-        className="cart-item-quantity"
-=======
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
         onBlur={e => changeQuantityInInput(e, id)}
-        className="shopping-cart-item-quantity"
->>>>>>> 6b549b4... input
+        className="cart-item-quantity"
       ></input>
       <button
         className="cart-item-button"
