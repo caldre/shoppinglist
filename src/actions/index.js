@@ -54,6 +54,13 @@ const shoppingCartDecrease = id => {
     payload: id
   };
 };
+const shoppingCartChange  = (id, quantity) => {
+  console.log("ACTION: shoppingChangeQuantity")
+  return {
+    type: "SHOPPING_CART_CHANGE_QUANTITY",
+    payload: { id, quantity }
+  }
+}
 
 const toggleAdmin = isAdmin => {
   console.log(`Toggling admin-status to:`);
@@ -63,6 +70,7 @@ const toggleAdmin = isAdmin => {
   };
 };
 
+
 export {
   addItem,
   removeItem,
@@ -70,5 +78,6 @@ export {
   shoppingCartRemove,
   shoppingCartIncrease,
   shoppingCartDecrease,
+  shoppingCartChange,
   toggleAdmin
 };
