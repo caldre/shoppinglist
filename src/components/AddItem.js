@@ -5,7 +5,7 @@ import { addItem } from "../actions";
 const Inputti = props => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [price, setPrice] = useState(0);
+  const [price, setPrice] = useState("");
 
   let newItem = {
     name,
@@ -19,7 +19,7 @@ const Inputti = props => {
     props.addItem(newItem);
     setName("");
     setDescription("");
-    setPrice(0);
+    setPrice("");
   };
 
   return (
