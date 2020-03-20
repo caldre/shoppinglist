@@ -69,7 +69,20 @@ const toggleAdmin = isAdmin => {
     payload: isAdmin
   };
 };
+const toggleEditing = isEditing => {
+  return {
+    type: "TOGGLE_EDITING",
+    payload: isEditing
+  }
+}
 
+const changeInputs = (name, description, price) => {
+
+  return {
+    type: "CHANGE_INPUTS",
+    payload: {name, description, price}
+  }
+}
 
 export {
   addItem,
@@ -79,5 +92,7 @@ export {
   shoppingCartIncrease,
   shoppingCartDecrease,
   shoppingCartChange,
-  toggleAdmin
+  toggleAdmin,
+  toggleEditing,
+  changeInputs
 };
