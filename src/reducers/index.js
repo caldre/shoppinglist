@@ -78,18 +78,22 @@ const storeReducer = (storeList = [], action) => {
 
 const UIReducer = (
   config = {
-    isAdmin: false
+    isAdmin: false,
+
   },
   action
 ) => {
   switch (action.type) {
     case "TOGGLE_ADMIN_STATUS":
-      config.isAdmin = !config.isAdmin;
+      console.log(action)
+      config.isAdmin = action.payload;
       return config;
     default:
       return config;
   }
 };
+
+
 
 export default combineReducers({
   shoppingCartReducer,
