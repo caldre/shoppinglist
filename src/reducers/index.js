@@ -79,6 +79,7 @@ const storeReducer = (storeList = [], action) => {
 const UIReducer = (
   config = {
     isAdmin: false,
+    isEditing: false
 
   },
   action
@@ -88,15 +89,35 @@ const UIReducer = (
       console.log(action)
       config.isAdmin = action.payload;
       return config;
+    case "TOGGLE_EDITING":
+      config.isEditing = action.payload
+      return config
     default:
       return config;
   }
 };
 
-
+const inputReducer = (inputFields = {
+  name: "tuotteen nimi",
+  description: "tuotteen kuvaus", 
+  price: "tuotteen hinta"}, 
+  action) => {
+  switch (action.type) {
+    case "CHANGE_INPUTS":
+      console.log(action)
+      const newInput = {
+      name: action.payload.name,
+      description: action.payload.description,
+      price: action.payload.price }
+      return newInput
+  default:
+    return inputFields  
+  }
+}
 
 export default combineReducers({
   shoppingCartReducer,
   storeReducer,
-  UIReducer
+  UIReducer,
+  inputReducer
 });
