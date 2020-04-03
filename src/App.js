@@ -15,8 +15,8 @@ function App() {
     <Router>
       <div className="grid-container">
         <Header />
-        <SideContainer></SideContainer>
-        <Route exact path="/admin" component={AddItem} />
+        <SideContainer />
+
         <Route exact path="/" component={ShoppingCart} />
         <Catalog />
         <Footer />

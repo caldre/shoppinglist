@@ -1,6 +1,6 @@
 * {
-  margin: 0px;
-  padding: 0.5em;
+  margin: 0;
+  padding: 0;
   border: 0px solid black;
   font-family: "Baloo Chettan 2", cursive;
 }
@@ -44,10 +44,14 @@ body {
 }
 
 .store-container {
+  padding: 2em;
   grid-area: c;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
 }
 
 .shopping-cart-container {
+  padding: 2em;
   grid-area: d;
   border-left: 1px solid black;
 }
@@ -55,16 +59,21 @@ body {
 .shopping-cart-row {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: baseline;
 }
 
 .cart-item-name {
-  flex-grow: 6;
+  flex-grow: 2;
 }
 
 .cart-item-quantity {
-  width: 2em;
+  width: 4em;
   text-align: end;
+}
+
+.cart-item-button {
+  width: 2em;
+  height: 2em;
 }
 
 /* .shopping-cart-row:nth-child(2) {
@@ -86,4 +95,30 @@ body {
 .add-display {
   display: flex;
   flex-direction: column;
+  border-left: 1px solid black;
+}
+
+.product-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 10em;
+  max-height: 20em;
+}
+
+.catalog-item-wrapper {
+  padding: 0.2em;
+  border: 1px solid lightgray;
+}
+
+.product-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.product-image {
+  height: 10em;
+  background-size: auto 100%;
+  background-position: center;
+  background-image: url("./layout/hidethepainharold.jpg");
 }

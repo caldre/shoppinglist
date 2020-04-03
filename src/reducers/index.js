@@ -6,19 +6,19 @@ const shoppingCartReducer = (shoppingCartList = [], action) => {
   switch (action.type) {
     case "SHOPPING_CART_INCREASE":
       console.log("REDUCER: Increasing quantity");
-      shoppingCartList.forEach(cartItem => arrayOfIds.push(cartItem.id));
+      shoppingCartList.forEach((cartItem) => arrayOfIds.push(cartItem.id));
       indexOfItem = arrayOfIds.indexOf(action.payload);
       shoppingCartList[indexOfItem].quantity++;
       return [...shoppingCartList];
 
     case "SHOPPING_CART_DECREASE":
       console.log("REDUCER: Decreasing quantity");
-      shoppingCartList.forEach(cartItem => arrayOfIds.push(cartItem.id));
+      shoppingCartList.forEach((cartItem) => arrayOfIds.push(cartItem.id));
       indexOfItem = arrayOfIds.indexOf(action.payload);
 
       if (shoppingCartList[indexOfItem].quantity === 1) {
         const newState = shoppingCartList.filter(
-          item => item.id !== action.payload
+          (item) => item.id !== action.payload
         );
         return [...newState];
       }
@@ -27,7 +27,7 @@ const shoppingCartReducer = (shoppingCartList = [], action) => {
       return [...shoppingCartList];
 
     case "SHOPPING_CART_ADD":
-      shoppingCartList.forEach(cartItem => arrayOfIds.push(cartItem.id));
+      shoppingCartList.forEach((cartItem) => arrayOfIds.push(cartItem.id));
       indexOfItem = arrayOfIds.indexOf(action.payload.id);
 
       if (indexOfItem === -1) {
@@ -37,27 +37,28 @@ const shoppingCartReducer = (shoppingCartList = [], action) => {
 
       const newAction = {
         type: "SHOPPING_CART_INCREASE",
-        payload: action.payload.id
+        payload: action.payload.id,
       };
 
       return shoppingCartReducer(shoppingCartList, newAction);
 
     case "SHOPPING_CART_REMOVE":
       const newState = shoppingCartList.filter(
-        item => item.id !== action.payload
+        (item) => item.id !== action.payload
       );
       console.log("REDUCER: Removing item from cart");
       return [...newState];
     case "SHOPPING_CART_CHANGE_QUANTITY":
-      console.log("REducer: SHOPPING_CART_CHANGE_QUANTITY")
-      console.log(action.payload)
-      const newShoppingCartList = shoppingCartList.map(item => { if (item.id === action.payload.id) { 
-        item.quantity = action.payload.quantity
-         return item
+      console.log("REducer: SHOPPING_CART_CHANGE_QUANTITY");
+      console.log(action.payload);
+      const newShoppingCartList = shoppingCartList.map((item) => {
+        if (item.id === action.payload.id) {
+          item.quantity = action.payload.quantity;
+          return item;
         }
-        return item
-      })
-      return newShoppingCartList 
+        return item;
+      });
+      return newShoppingCartList;
     default:
       return shoppingCartList;
   }
@@ -70,7 +71,7 @@ const storeReducer = (storeList = [], action) => {
       return [...storeList, action.payload];
     case "REMOVE_ITEM":
       console.log("REDUCER: Removing item from store");
-      return storeList.filter(item => item.id !== action.payload.id);
+      return storeList.filter((item) => item.id !== action.payload.id);
     default:
       return storeList;
   }
@@ -79,45 +80,48 @@ const storeReducer = (storeList = [], action) => {
 const UIReducer = (
   config = {
     isAdmin: false,
-    isEditing: false
-
+    isEditing: false,
   },
   action
 ) => {
   switch (action.type) {
     case "TOGGLE_ADMIN_STATUS":
-      console.log(action)
+      console.log(action);
       config.isAdmin = action.payload;
       return config;
     case "TOGGLE_EDITING":
-      config.isEditing = action.payload
-      return config
+      config.isEditing = action.payload;
+      return config;
     default:
       return config;
   }
 };
 
-const inputReducer = (inputFields = {
-  name: "tuotteen nimi",
-  description: "tuotteen kuvaus", 
-  price: "tuotteen hinta"}, 
-  action) => {
+const inputReducer = (
+  inputFields = {
+    name: "",
+    description: "",
+    price: "",
+  },
+  action
+) => {
   switch (action.type) {
     case "CHANGE_INPUTS":
-      console.log(action)
+      console.log(action);
       const newInput = {
-      name: action.payload.name,
-      description: action.payload.description,
-      price: action.payload.price }
-      return newInput
-  default:
-    return inputFields  
+        name: action.payload.name,
+        description: action.payload.description,
+        price: action.payload.price,
+      };
+      return newInput;
+    default:
+      return inputFields;
   }
-}
+};
 
 export default combineReducers({
   shoppingCartReducer,
   storeReducer,
   UIReducer,
-  inputReducer
+  inputReducer,
 });

@@ -2,8 +2,8 @@ import React from "react";
 import ShoppingCartItem from "./ShoppingCartItem";
 import { connect } from "react-redux";
 
-const ShoppingCart = props => {
-  const cartRows = props.shoppingCartList.map(cartItem => (
+const ShoppingCart = (props) => {
+  const cartRows = props.shoppingCartList.map((cartItem) => (
     <ShoppingCartItem cartItem={cartItem} key={cartItem.id} />
   ));
 
@@ -15,7 +15,7 @@ const ShoppingCart = props => {
   );
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return { shoppingCartList: state.shoppingCartReducer };
 };
 
