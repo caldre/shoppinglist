@@ -1,13 +1,13 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import {
   shoppingCartIncrease,
   shoppingCartDecrease,
   shoppingCartRemove,
-  shoppingCartChange
+  shoppingCartChange,
 } from "../actions";
 import { connect } from "react-redux";
 
-const ShoppingCartItem = props => {
+const ShoppingCartItem = (props) => {
   const { id, name, quantity, price } = props.cartItem;
   
   const changeQuantityInInput = (e, id) => {
@@ -15,10 +15,9 @@ const ShoppingCartItem = props => {
     props.shoppingCartChange(id, e.target.value)
     console.log(id, e.target.value)
   };
-  const [inputValue, setInputValue] = useState(quantity)
-  const [inputFocus, setInputFocus] = useState(false)
+  const [inputValue, setInputValue] = useState(quantity);
+  const [inputFocus, setInputFocus] = useState(false);
 
-  
   return (
     <div className="shopping-cart-row">
       <h3 className="cart-item-name">{name}</h3>
@@ -32,28 +31,30 @@ const ShoppingCartItem = props => {
         -
       </button>
       <input
-        value={ (inputFocus) ? inputValue : quantity}
-        onFocus={() => { 
-          setInputValue(quantity)
-          setInputFocus(true)}}
+        value={inputFocus ? inputValue : quantity}
+        onFocus={() => {
+          setInputValue(quantity);
+          setInputFocus(true);
+        }}
         onChange={(e) => setInputValue(e.target.value)}
-        onBlur={(e) => { 
-          changeQuantityInInput(e,id)
-          setInputFocus(false)} }
+        onBlur={(e) => {
+          changeQuantityInInput(e, id);
+          setInputFocus(false);
+        }}
         className="cart-item-quantity"
       ></input>
       <button
         className="cart-item-button"
         style={{ cursor: "pointer" }}
-        onClick={() => { 
-          
-          props.shoppingCartIncrease(id)
-          }
-        }
+        onClick={() => {
+          props.shoppingCartIncrease(id);
+        }}
       >
         +
       </button>
-      <p className="cart-item-quantity">{price * quantity}€</p>
+      <p className="cart-item-quantity">
+        {Number(price * quantity).toFixed(2)}€
+      </p>
       <button
         className="cart-item-button"
         style={{ cursor: "pointer" }}
@@ -67,7 +68,7 @@ const ShoppingCartItem = props => {
   );
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return { shoppingCartList: state.shoppingCartReducer };
 };
 
@@ -75,5 +76,5 @@ export default connect(mapStateToProps, {
   shoppingCartIncrease,
   shoppingCartDecrease,
   shoppingCartRemove,
-  shoppingCartChange
+  shoppingCartChange,
 })(ShoppingCartItem);

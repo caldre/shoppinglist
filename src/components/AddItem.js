@@ -2,13 +2,12 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { addItem, saveCatalogChange, toggleEditing } from "../actions";
 
-const Inputti = props => {
+const Inputti = (props) => {
   const [name, setName] = useState(props.inputFields.name);
   const [description, setDescription] = useState(props.inputFields.description);
   const [price, setPrice] = useState(props.inputFields.price);
   
 
-  console.log(name, description, price)
   let newItem = {
     name,
     description,
@@ -59,19 +58,19 @@ const Inputti = props => {
     <form className="add-display">
       <input
         type="text"
-        
-        onChange={e => setName(e.target.value)}
+        placeholder="Lisää tuotteen nimi"
+        onChange={(e) => setName(e.target.value)}
         value={name}
       ></input>
       <textarea
-        
-        onChange={e => setDescription(e.target.value)}
+        onChange={(e) => setDescription(e.target.value)}
+        placeholder="Lisää tuotteen kuvaus"
         value={description}
       ></textarea>
       <input
         type="number"
-        
-        onChange={e => setPrice(e.target.value)}
+        onChange={(e) => setPrice(e.target.value)}
+        placeholder="Lisää tuotteen arvo"
         value={price}
       ></input>
       
@@ -85,8 +84,8 @@ const Inputti = props => {
   
 };
 
-const mapStateToProps = state => {
-  return { 
+const mapStateToProps = (state) => {
+  return {
     storeList: state.storeReducer,
     inputFields: state.inputReducer,
     editing: state.UIReducer
