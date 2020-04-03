@@ -1,27 +1,51 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { addItem } from "../actions";
+import { addItem, saveCatalogChange, toggleEditing } from "../actions";
 
 const Inputti = props => {
   const [name, setName] = useState(props.inputFields.name);
   const [description, setDescription] = useState(props.inputFields.description);
   const [price, setPrice] = useState(props.inputFields.price);
+  
 
   console.log(name, description, price)
   let newItem = {
     name,
     description,
-    price
+    price,
   };
 
  useEffect(() => {
    setName(props.inputFields.name)
    setDescription(props.inputFields.description)
    setPrice(props.inputFields.price)
+   
  }, [props.inputFields])
 
-
-
+  const SaveButton = (props) => { 
+    
+   
+    
+  if (props.editingStatus)  { 
+ 
+    
+     return (
+  <button
+    onClick={() => {
+      props.toggleEdit(false)
+      props.saveChange({
+        name,
+        description,
+        price,
+        id: props.id
+      });
+ 
+    } }
+  >
+    SAVE
+  </button>) }
+   return null
+  }
   const handleSubmit = e => {
     e.preventDefault();
 
@@ -30,7 +54,7 @@ const Inputti = props => {
     setDescription("");
     setPrice("");
   };
-
+  
   return (
     <form className="add-display">
       <input
@@ -50,18 +74,24 @@ const Inputti = props => {
         onChange={e => setPrice(e.target.value)}
         value={price}
       ></input>
+      
       <button type="submit" onClick={e => handleSubmit(e)}>
-        Lisää
+        Add
       </button>
+      <SaveButton id = {props.inputFields.id} editingStatus = {props.editing.isEditing} saveChange = {props.saveCatalogChange} toggleEdit= {props.toggleEditing}/>
     </form>
+    
   );
+  
 };
 
 const mapStateToProps = state => {
   return { 
     storeList: state.storeReducer,
-    inputFields: state.inputReducer
+    inputFields: state.inputReducer,
+    editing: state.UIReducer
  };
+ 
 };
 
-export default connect(mapStateToProps, { addItem })(Inputti);
+export default connect(mapStateToProps, { addItem, saveCatalogChange, toggleEditing })(Inputti);

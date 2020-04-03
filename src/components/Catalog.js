@@ -24,13 +24,13 @@ const Catalog = props => {
   const ADMINedit = (props) => { 
     
  if (props.adminStatus)  { 
-   
+
    
     return (
  <button
    onClick={() => {
      props.editingStatus(true)
-     props.inputChange(props.item.name, props.item.description, props.item.price);
+     props.inputChange(props.item.name, props.item.description, props.item.price, props.item.id);
 
    } }
  >
