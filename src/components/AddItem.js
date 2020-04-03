@@ -14,6 +14,7 @@ const Inputti = (props) => {
     price,
   };
 
+
  useEffect(() => {
    setName(props.inputFields.name)
    setDescription(props.inputFields.description)
@@ -76,6 +77,7 @@ const Inputti = (props) => {
       
       <button type="submit" onClick={e => handleSubmit(e)}>
         Add
+
       </button>
       <SaveButton id = {props.inputFields.id} editingStatus = {props.editing.isEditing} saveChange = {props.saveCatalogChange} toggleEdit= {props.toggleEditing}/>
     </form>
@@ -91,6 +93,7 @@ const mapStateToProps = (state) => {
     editing: state.UIReducer
  };
  
+
 };
 
 export default connect(mapStateToProps, { addItem, saveCatalogChange, toggleEditing })(Inputti);

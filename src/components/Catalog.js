@@ -38,6 +38,7 @@ const Catalog = (props) => {
               props.item.description,
               props.item.price,
               props.item.id
+
             );
           }}
         >

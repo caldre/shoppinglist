@@ -14,6 +14,7 @@ const ShoppingCartItem = (props) => {
     e.preventDefault()
     props.shoppingCartChange(id, e.target.value)
     console.log(id, e.target.value)
+
   };
   const [inputValue, setInputValue] = useState(quantity);
   const [inputFocus, setInputFocus] = useState(false);
