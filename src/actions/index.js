@@ -76,11 +76,19 @@ const toggleEditing = isEditing => {
   }
 }
 
-const changeInputs = (name, description, price) => {
+const changeInputs = (name, description, price, id) => {
 
   return {
     type: "CHANGE_INPUTS",
-    payload: {name, description, price}
+    payload: {name, description, price, id}
+  }
+}
+
+const saveCatalogChange = (inputFields) => {
+     console.log("ÄKSÖNI" + inputFields.price)
+  return {
+    type: "SAVE_CATALOG_CHANGE",
+    payload: {inputFields}
   }
 }
 
@@ -94,5 +102,6 @@ export {
   shoppingCartChange,
   toggleAdmin,
   toggleEditing,
-  changeInputs
+  changeInputs,
+  saveCatalogChange
 };

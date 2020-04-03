@@ -36,7 +36,9 @@ const Catalog = (props) => {
             props.inputChange(
               props.item.name,
               props.item.description,
-              props.item.price
+              props.item.price,
+              props.item.id
+
             );
           }}
         >

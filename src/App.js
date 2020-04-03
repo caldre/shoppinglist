@@ -5,7 +5,7 @@ import Header from "./layout/Header";
 import Footer from "./layout/Footer";
 import SideContainer from "./layout/SideContainer";
 
-import AddItem from "./components/AddItem";
+
 import Catalog from "./components/Catalog";
 import ShoppingCart from "./components/ShoppingCart";
 import "./App.css";

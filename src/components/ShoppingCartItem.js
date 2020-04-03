@@ -9,12 +9,12 @@ import { connect } from "react-redux";
 
 const ShoppingCartItem = (props) => {
   const { id, name, quantity, price } = props.cartItem;
-  let focus = false;
+  
   const changeQuantityInInput = (e, id) => {
-    e.preventDefault();
-    props.shoppingCartChange(id, e.target.value);
-    console.log(id, e.target.value);
-    focus = false;
+    e.preventDefault()
+    props.shoppingCartChange(id, e.target.value)
+    console.log(id, e.target.value)
+
   };
   const [inputValue, setInputValue] = useState(quantity);
   const [inputFocus, setInputFocus] = useState(false);

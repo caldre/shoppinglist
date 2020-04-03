@@ -71,7 +71,21 @@ const storeReducer = (storeList = [], action) => {
       return [...storeList, action.payload];
     case "REMOVE_ITEM":
       console.log("REDUCER: Removing item from store");
-      return storeList.filter((item) => item.id !== action.payload.id);
+
+      return storeList.filter(item => item.id !== action.payload.id);
+    case "SAVE_CATALOG_CHANGE":
+      console.log("KATALOOGI"+action.payload.inputFields.id)
+        const newStoreList = storeList.map(item => { if (item.id === action.payload.inputFields.id) {
+        item.price = action.payload.inputFields.price
+        item.description = action.payload.inputFields.description
+        item.name = action.payload.inputFields.name
+        return item
+      }
+      return item
+        })
+      return newStoreList
+    
+
     default:
       return storeList;
   }
@@ -97,25 +111,27 @@ const UIReducer = (
   }
 };
 
-const inputReducer = (
-  inputFields = {
-    name: "",
-    description: "",
-    price: "",
-  },
-  action
-) => {
+
+const inputReducer = (inputFields = {
+  name: "",
+  description: "", 
+  price: "",
+  id: ""}, 
+  action) => {
+
   switch (action.type) {
     case "CHANGE_INPUTS":
       console.log(action);
       const newInput = {
-        name: action.payload.name,
-        description: action.payload.description,
-        price: action.payload.price,
-      };
-      return newInput;
-    default:
-      return inputFields;
+
+      name: action.payload.name,
+      description: action.payload.description,
+      price: action.payload.price ,
+      id: action.payload.id}
+      return newInput
+  default:
+    return inputFields  
+
   }
 };
 
