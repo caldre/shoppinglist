@@ -98,14 +98,16 @@ const UIReducer = (
   },
   action
 ) => {
+  let newconfig = {isAdmin: config.isAdmin,
+                    isEditing: config.isEditing}
   switch (action.type) {
     case "TOGGLE_ADMIN_STATUS":
       console.log(action);
-      config.isAdmin = action.payload;
-      return config;
+      newconfig.isAdmin = action.payload;
+      return newconfig;
     case "TOGGLE_EDITING":
-      config.isEditing = action.payload;
-      return config;
+      newconfig.isEditing = action.payload;
+      return newconfig;
     default:
       return config;
   }

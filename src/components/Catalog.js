@@ -8,6 +8,8 @@ import {
 } from "../actions";
 import { connect } from "react-redux";
 
+
+
 const Catalog = (props) => {
   console.log(props.adminStatus);
 
@@ -27,6 +29,19 @@ const Catalog = (props) => {
     }
     return null;
   };
+
+  const CartAddButton = (props) => {
+  
+    if (!props.status) {
+     return ( 
+     <button 
+      onClick= {() => { 
+        props.add(props.item)}}>
+        ADD TO CART
+        </button> )
+      } return null
+  }
+
   const ADMINedit = (props) => {
     if (props.adminStatus) {
       return (
@@ -58,13 +73,8 @@ const Catalog = (props) => {
           status={props.adminStatus}
           remove={props.removeItem}
         />
-        <button
-          onClick={() => {
-            props.shoppingCartAdd(storeItem);
-          }}
-        >
-          ADD TO CART
-        </button>
+        <CartAddButton status={props.adminStatus} add={props.shoppingCartAdd} item={storeItem}/>
+          
         <ADMINedit
           item={storeItem}
           editingStatus={props.toggleEditing}

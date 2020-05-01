@@ -6,11 +6,19 @@ const ShoppingCart = (props) => {
   const cartRows = props.shoppingCartList.map((cartItem) => (
     <ShoppingCartItem cartItem={cartItem} key={cartItem.id} />
   ));
+  const endSum = () => {
+    let sum = 0;
+    props.shoppingCartList.forEach(
+      (cartItem) => (sum += cartItem.quantity * cartItem.price)
+    );
+    return <p className="total-sum">Total Sum: {sum}€</p>;
+  };
 
   return (
     <div className="shopping-cart-container">
       <h1>Shopping Cart</h1>
       {cartRows}
+      {endSum()}
     </div>
   );
 };
