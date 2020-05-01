@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import Header from "./layout/Header";
 import Footer from "./layout/Footer";
-import SideContainer from "./layout/SideContainer";
+import View from "./components/View"
 
 
 import Catalog from "./components/Catalog";
@@ -15,10 +15,10 @@ function App() {
     <Router>
       <div className="grid-container">
         <Header />
-        <SideContainer />
-
-        <Route exact path="/" component={ShoppingCart} />
-        <Catalog />
+        
+        
+        <View/>
+        
         <Footer />
       </div>
     </Router>
