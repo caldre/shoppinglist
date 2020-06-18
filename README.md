@@ -1,3 +1,7 @@
+## Web store
+
+Just another attempt to make web store from scratch, basically a learning experience for me and my friend. Store uses Redux. Tried to hammer down some bugs before uploading. Not expecting really to update since other projects await.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
